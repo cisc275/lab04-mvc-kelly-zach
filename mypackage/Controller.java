@@ -1,3 +1,4 @@
+package mypackage;
 /**
  * Do not modify this file without permission from your TA.
  **/

@@ -1,3 +1,4 @@
+package mypackage;
 /**
  * Model: Contains all the state and logic
  * Does not contain anything about images or graphics, must ask view for that
@@ -8,3 +9,6 @@
  * provide direction
  * provide location
  **/
+class Model{
+	
+}
