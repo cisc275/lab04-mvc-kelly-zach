@@ -9,15 +9,25 @@ package mypackage;
  * provide direction
  * provide location
  **/
+
+//where does jpanel fit into this ..?
+
 class Model{
 	int X;
 	int Y;
-	
+	int imgX;
+	int imgY;
 	
 	Model(int width, int height, int imageWidth, int imageHeight){
 		this.X = width;
 		this.Y = height;
+		this.imgX = imageWidth;
+		this.imgY = imageHeight;
 		//idk where these would go? are they fields
+	}
+	
+	public Direction getDirect() {
+		return Direction.NORTH;
 	}
 	
 	public int getX() {
@@ -33,7 +43,7 @@ class Model{
 	}
 	
 	public void updateDirectionAndLocation() {
-		X = 12;
+		this.X += 12;
 	}
 	
 }
