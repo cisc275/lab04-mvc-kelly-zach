@@ -15,8 +15,11 @@ package mypackage;
 class Model{
 	int X;
 	int Y;
-	int imgX;
-	int imgY;
+	final int imgX;
+	final int imgY;
+    final static int frameWidth = 500;
+    final static int frameHeight = 300;
+	Direction dir = Direction.EAST;
 	
 	Model(int width, int height, int imageWidth, int imageHeight){
 		this.X = width;
@@ -27,7 +30,7 @@ class Model{
 	}
 	
 	public Direction getDirect() {
-		return Direction.NORTH;
+		return dir;
 	}
 	
 	public int getX() {
@@ -44,12 +47,55 @@ class Model{
 	public int getImgY() {
 		return imgY;
 	}
-	public Direction getDirection() {
-		return Direction.NORTH;
-	}
 	
 	public void updateLocationAndDirection() {
-		this.X += 12;
+		int frameXSize = frameWidth - imgX; //adjust for image size 
+    	int frameYSize = frameHeight - imgY;
+    	
+    	if (this.X >= frameXSize) {//touch the right-side frame
+    		if (this.dir == Direction.EAST) { //straight east
+    			this.dir = Direction.WEST;    //bounce to west
+    		}
+    		if (this.dir == Direction.SOUTHEAST) {//from south-east
+    			this.dir = Direction.SOUTHWEST;   //bounce to south-west
+    		}
+    		if (this.dir == Direction.NORTHEAST) {//from north-east
+    			this.dir = Direction.NORTHWEST;   //bounce to north-west
+    		}
+    	} 
+    	else if (this.X <= 0){ //touch the left-side frame
+    		if (this.dir == Direction.WEST) { //straight west
+    			this.dir = Direction.EAST;    //bounce to east
+    		}
+    		if (this.dir == Direction.SOUTHWEST) { //from south-west
+    			this.dir = Direction.SOUTHEAST;    //bounce to south-east
+    		}
+    		if (this.dir == Direction.NORTHWEST) { //from north-west
+    			this.dir = Direction.NORTHEAST;    //bounce to north-east
+    		}
+    	}
+    	if (this.Y >= frameYSize) {//touch the down-side frame
+    		if (this.dir == Direction.SOUTH) { //straight south
+    			this.dir = Direction.NORTH;    //bounce to north
+    		}
+    		if (this.dir == Direction.SOUTHWEST) {// from south-west
+    			this.dir = Direction.NORTHWEST;   //bounce to north-west
+    		}
+    		if (this.dir == Direction.SOUTHEAST) {//from south-east
+    			this.dir = Direction.NORTHEAST;   //bounce to north-east
+    		}
+    	} 
+    	else if (this.Y <= 0){//touch the up-side frame
+    		if (this.dir == Direction.NORTH) {//straight north
+    			this.dir = Direction.SOUTH;   //bounce to south
+    		}
+    		if (this.dir == Direction.NORTHEAST) { //from the north-east
+    			this.dir = Direction.SOUTHEAST;    //bounce to north-west
+    		}
+    		if (this.dir == Direction.NORTHWEST) { //from the north-west
+    			this.dir = Direction.SOUTHWEST;    //bounce to south-west
+    		}
+    	}
 	}
 	
 }
