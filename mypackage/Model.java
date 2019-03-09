@@ -31,18 +31,24 @@ class Model{
 	}
 	
 	public int getX() {
-		return 0;
+		return X;
 	}
 	
 	public int getY() {
-		return 0;
+		return Y;
 	}
 	
+	public int getImgX() {
+		return imgX;
+	}
+	public int getImgY() {
+		return imgY;
+	}
 	public Direction getDirection() {
 		return Direction.NORTH;
 	}
 	
-	public void updateDirectionAndLocation() {
+	public void updateLocationAndDirection() {
 		this.X += 12;
 	}
 	

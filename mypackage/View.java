@@ -1,8 +1,13 @@
 package mypackage;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import javax.imageio.ImageIO;
 
@@ -28,6 +33,9 @@ class View{ //extends jpanel ?????
     final int frameCount = 10;
     final static int imgWidth = 165;
     final static int imgHeight = 165;
+    final static int frameWidth = 500;
+    final static int frameHeight = 300;
+    int picNum = 0;
 	
 	public View() {
     	BufferedImage img = createImage("west"); //for west direction
@@ -89,20 +97,21 @@ class View{ //extends jpanel ?????
     	
     }
     
-    public void paint() { //if jpanel
-    	
+    public void paint(Graphics g) {
+        picNum = (picNum + 1) % frameCount;
+        g.drawImage(findDirection(goNorth,goEast)[picNum], getX()+=xIncr*xDir, yloc+=yIncr*yDir, Color.gray, this);
     }
 	
 	public int getWidth(){
-		return 0;
+		return frameWidth;
 	}
 	public int getHeight() {
-		return 0;
+		return frameHeight;
 	}
 	public int getImageWidth() {
-		return 0;
+		return imgWidth;
 	}
 	public int getImageHeight() {
-		return 0;
+		return imgHeight;
 	}
 }
