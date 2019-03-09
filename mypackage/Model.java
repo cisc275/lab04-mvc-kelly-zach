@@ -13,17 +13,19 @@ package mypackage;
 //where does jpanel fit into this ..?
 
 class Model{
-	int X;
-	int Y;
+	int X = 0;
+	int Y = 0;
+    final int xIncr = 8;
+    final int yIncr = 2;
 	final int imgX;
 	final int imgY;
-    final static int frameWidth = 500;
-    final static int frameHeight = 300;
+    int frameWidth = 500;
+    int frameHeight = 300;
 	Direction dir = Direction.EAST;
 	
 	Model(int width, int height, int imageWidth, int imageHeight){
-		this.X = width;
-		this.Y = height;
+		this.frameWidth = width;
+		this.frameHeight = height;
 		this.imgX = imageWidth;
 		this.imgY = imageHeight;
 		//idk where these would go? are they fields
@@ -51,6 +53,8 @@ class Model{
 	public void updateLocationAndDirection() {
 		int frameXSize = frameWidth - imgX; //adjust for image size 
     	int frameYSize = frameHeight - imgY;
+		
+    	//update direction
     	
     	if (this.X >= frameXSize) {//touch the right-side frame
     		if (this.dir == Direction.EAST) { //straight east
@@ -95,6 +99,30 @@ class Model{
     		if (this.dir == Direction.NORTHWEST) { //from the north-west
     			this.dir = Direction.SOUTHWEST;    //bounce to south-west
     		}
+    	}
+    	
+    	//update location
+    	switch (dir) {
+    	case NORTH:
+    		Y -= yIncr;
+    	case NORTHEAST:
+    		Y -= yIncr;
+    		X += xIncr;
+    	case EAST:
+    		X += xIncr;
+    	case SOUTHEAST:
+    		X += xIncr;
+    		Y += yIncr;
+    	case SOUTH:
+    		Y += yIncr;
+    	case SOUTHWEST:
+    		X -= xIncr;
+    		Y -= yIncr;
+    	case WEST:
+    		X -= xIncr;
+    	case NORTHWEST:
+    		X -= xIncr;
+    		Y -= yIncr;
     	}
 	}
 	

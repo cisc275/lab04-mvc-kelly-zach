@@ -20,7 +20,7 @@ import javax.imageio.ImageIO;
  * use proper images for direction
  * load images for all direction (an image should only be loaded once!!! why?)
  **/
-class View{ //extends jpanel ?????
+class View extends JPanel{
 
     BufferedImage[] picsWest;
     BufferedImage[] picsEast;
@@ -94,12 +94,13 @@ class View{ //extends jpanel ?????
     }
     
     public void update(int x, int y, Direction dir) {
+    	System.out.println("x: "+ x + " y: " + y + " dir: " + dir);
     	
     }
     
     public void paint(Graphics g) {
         picNum = (picNum + 1) % frameCount;
-        g.drawImage(findDirection(goNorth,goEast)[picNum], getX()+=xIncr*xDir, yloc+=yIncr*yDir, Color.gray, this);
+        //g.drawImage(findDirection(goNorth,goEast)[picNum], getX()+=xIncr*xDir, yloc+=yIncr*yDir, Color.gray, this);
     }
 	
 	public int getWidth(){
