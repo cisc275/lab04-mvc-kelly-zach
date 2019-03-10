@@ -13,12 +13,12 @@ package mypackage;
 //where does jpanel fit into this ..?
 
 class Model{
-	int X = 0;
+	int X =1; 
 	int Y = 0;
-    final int xIncr = 8;
-    final int yIncr = 2;
-	final int imgX;
-	final int imgY;
+    int xIncr = 8;
+    int yIncr = 2;
+    int imgX;
+	int imgY;
     int frameWidth = 500;
     int frameHeight = 300;
 	Direction dir = Direction.EAST;
@@ -105,24 +105,32 @@ class Model{
     	switch (dir) {
     	case NORTH:
     		Y -= yIncr;
+    		break;
     	case NORTHEAST:
     		Y -= yIncr;
     		X += xIncr;
+    		break;
     	case EAST:
     		X += xIncr;
+    		break;
     	case SOUTHEAST:
     		X += xIncr;
     		Y += yIncr;
+    		break;
     	case SOUTH:
     		Y += yIncr;
+    		break;
     	case SOUTHWEST:
     		X -= xIncr;
     		Y -= yIncr;
+    		break;
     	case WEST:
     		X -= xIncr;
+    		break;
     	case NORTHWEST:
     		X -= xIncr;
     		Y -= yIncr;
+    		break;
     	}
 	}
 	
