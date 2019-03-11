@@ -13,15 +13,15 @@ package mypackage;
 //where does jpanel fit into this ..?
 
 class Model{
-	int X =1; 
-	int Y = 0;
+	int X =50; 
+	int Y = 50;
     int xIncr = 8;
     int yIncr = 2;
     int imgX;
 	int imgY;
     int frameWidth = 500;
     int frameHeight = 300;
-	Direction dir = Direction.EAST;
+	Direction dir = Direction.NORTHEAST;
 	
 	Model(int width, int height, int imageWidth, int imageHeight){
 		this.frameWidth = width;
